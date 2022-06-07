@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: Aura Interview
+  version: 1.0.0
+servers:
+  - url: {{url}}
+paths:
+  /prod/zips:
+    get:
+      tags:
+        - default
+      summary: Get Zips
+      parameters:
+        - name: zip
+          in: query
+          schema:
+            type: integer
+          example: '123456'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: STANDARD
+        - name: primary_city
+          in: query
+          schema:
+            type: string
+          example: Seymour
+        - name: country
+          in: query
+          schema:
+            type: string
+          example: US
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
