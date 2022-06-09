@@ -56,8 +56,8 @@ export class ZipCode {
                 // default k (limit of results to return) to 10
                 const k = queryParams.limit !== undefined ? parseInt(queryParams.limit) : 10
 
-                const latitude = parseInt(queryParams.coordinates.split(',')[0])
-                const longitude = parseInt(queryParams.coordinates.split(',')[1])
+                const latitude = parseFloat(queryParams.coordinates.split(',')[0])
+                const longitude = parseFloat(queryParams.coordinates.split(',')[1])
                 zips = this.kClosestZips(zips, {latitude, longitude}, k)
             }
     
@@ -77,9 +77,9 @@ export class ZipCode {
      * @param zips 
      * @param k 
      */
-    kClosestZips(zips: Array<any>, point: Coordinate, k: Number) :Array<Zip> {
+    kClosestZips(zips: Array<any>, point: Coordinate, k: number) :Array<Zip> {
         const zipsWithDistance = zips.map((zip) => {
-            zip.distance = Math.pow(parseInt(zip.latitude) - point.latitude, 2) + Math.pow(parseInt(zip.longitude) - point.longitude, 2)
+            zip.distance = Math.pow(parseFloat(zip.latitude) - point.latitude, 2) + Math.pow(parseFloat(zip.longitude) - point.longitude, 2)
             return zip
         })
 
