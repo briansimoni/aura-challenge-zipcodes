@@ -4,13 +4,16 @@ In preparation for interview questions, I'm making an attempt to create high lev
 
 * Does it meet business requirements?
 * API interface
+* Code
 * Developer workflow
 * Documentation
 * CI/CD
-* Cloud infrastructure
+* Cloud infrastructure and scalability
 * Testing
 * Security
 * Cost
+* Operational Support
+* Data layer
 
 ## Business Requirements
 ...
@@ -120,3 +123,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `cdk deploy`      deploy this stack to your default AWS account/region
 * `cdk diff`        compare deployed stack with current state
 * `cdk synth`       emits the synthesized CloudFormation template
+
+
+### notes
+` p2o 'C:\Users\Brian\Downloads\Aura Interview.postman_collection.json' -f .\Downloads\api.yml`

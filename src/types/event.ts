@@ -12,14 +12,18 @@ export interface HttpRequestEvent {
     multiValueHeaders: MultiValueHeaders;
     requestContext: RequestContext;
   }
+  // export interface QueryStringParameters {
+  //   zip: string;
+  //   type: string;
+  //   primary_city: string;
+  //   state: string;
+  //   latitude: string;
+  //   longittude: string;
+  //   country: string;
+  //   area_coede: string;
+  // }
   export interface QueryStringParameters {
-    zip: string;
-    type: string;
-    primary_city: string;
-    state: string;
-    latitude: string;
-    longittude: string;
-    country: string;
+    [key:string]: string
   }
   export interface MultiValueQueryStringParameters {
     foo?: string[] | null;

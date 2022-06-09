@@ -7,7 +7,12 @@ export class ZipCode {
     }
 
     post(event: HttpRequestEvent) {
-        return 'Todo'
+        return {
+            statusCode: 501,
+            body: {
+                message: 'todo: implement this'
+            }
+        }
     }
 
     // If you were to literally send in a zip code such as: '23224'
@@ -24,10 +29,21 @@ export class ZipCode {
                 zips = zips.filter(zip => zip.type === queryParams.type)
             }
             if (queryParams.primary_city !== undefined) {
-                zips = zips.filter(zip => zip.primary_city === queryParams.primary_city)
+                zips = zips.filter(zip => zip.primary_city.includes(queryParams.primary_city))
             }
             if (queryParams.country !== undefined) {
                 zips = zips.filter(zip => zip.country === queryParams.country)
+            }
+
+            if (queryParams.area_codes !== undefined) {
+                const areaCode = queryParams?.area_codes;
+                zips = zips.filter(zip => {
+                    const areaCodes = zip.area_codes?.split(",")
+                    if (areaCodes?.includes(areaCode)) {
+                        return true
+                    }
+                    return false
+                })
             }
     
             // this could look like "acceptable_cities": "Healdville, Hortonville, Lake Hinevah, Summit"
