@@ -126,4 +126,4 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 
 ### notes
-` p2o 'C:\Users\Brian\Downloads\Aura Interview.postman_collection.json' -f .\Downloads\api.yml`
+`p2o 'C:\Users\Brian\Downloads\Aura Interview.postman_collection.json' -f .\Downloads\api.yml`

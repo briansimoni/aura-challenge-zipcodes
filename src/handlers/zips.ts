@@ -1,9 +1,9 @@
-import { HttpRequestEvent } from "./types/event";
-import { ZipCode } from "./zipcode";
+import { HttpRequestEvent } from "../types/event";
+import { Zips } from "../zipcode";
 
 // could theoretically be used across invocations
 // this improves efficiency by a small margin
-const zips = new ZipCode();
+const zips = new Zips();
 
 export async function handler(event: HttpRequestEvent) {
   try {

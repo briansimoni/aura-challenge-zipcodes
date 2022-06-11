@@ -9,13 +9,13 @@ export class AuraChallengeZipcodesStack extends Stack {
 
     const zipsFunction = new lambda.Function(this, 'zipsFunction', {
       runtime: lambda.Runtime.NODEJS_16_X,
-      code: lambda.Code.fromAsset('src'),
-      handler: 'index.handler'
+      code: lambda.Code.fromAsset('src/handlers'),
+      handler: 'zips.handler'
     })
 
     const docsFunction = new lambda.Function(this, 'docs', {
       runtime: lambda.Runtime.NODEJS_16_X,
-      code: lambda.Code.fromAsset('src'),
+      code: lambda.Code.fromAsset('src/handlers'),
       handler: 'docs.handler'
     })
 

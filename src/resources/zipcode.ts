@@ -1,12 +1,9 @@
 // import { Result } from 'aws-cdk-lib/aws-stepfunctions';
-import * as zipcodes from './data.json'
-import { HttpRequestEvent } from './types/event';
-import { Zip } from './types/zip';
+import * as zipcodes from '../static/data.json'
+import { HttpRequestEvent } from '../types/event';
+import { Zip } from '../types/zip';
 
-export class ZipCode {
-    constructor() {
-
-    }
+export class Zips {
 
     post(event: HttpRequestEvent) {
         return {

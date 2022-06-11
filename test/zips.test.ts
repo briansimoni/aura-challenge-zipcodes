@@ -2,14 +2,13 @@ import {
   Headers,
   HttpRequestEvent,
   MultiValueHeaders,
-  MultiValueQueryStringParameters,
   PathParameters,
   QueryStringParameters,
   RequestContext,
   StageVariables,
 } from "../src/types/event";
 import { Zip } from "../src/types/zip";
-import { ZipCode } from "../src/zipcode";
+import { Zips } from "../src/resources/zipcode";
 
 class FakeEvent implements HttpRequestEvent {
   body: "";
@@ -18,7 +17,6 @@ class FakeEvent implements HttpRequestEvent {
   httpMethod: "";
   isBase64Encoded: false;
   queryStringParameters: QueryStringParameters;
-  multiValueQueryStringParameters: MultiValueQueryStringParameters;
   pathParameters: PathParameters;
   stageVariables: StageVariables;
   headers: Headers;
@@ -27,7 +25,7 @@ class FakeEvent implements HttpRequestEvent {
 }
 
 test("single area code", () => {
-  const zip = new ZipCode();
+  const zip = new Zips();
   const event = new FakeEvent();
   event.queryStringParameters = {
     area_codes: "203",
@@ -36,7 +34,6 @@ test("single area code", () => {
 
   expect(result).toHaveLength(181);
 
-  // insired from https://medium.com/@andrei.pfeiffer/jest-matching-objects-in-array-50fe2f4d6b98
   expect(result).toEqual(
     expect.arrayContaining([
       expect.objectContaining({
@@ -47,7 +44,7 @@ test("single area code", () => {
 });
 
 test("different single area code", () => {
-  const zip = new ZipCode();
+  const zip = new Zips();
   const event = new FakeEvent();
   event.queryStringParameters = {
     area_codes: "203",
@@ -56,7 +53,6 @@ test("different single area code", () => {
 
   expect(result).toHaveLength(181);
 
-  // insired from https://medium.com/@andrei.pfeiffer/jest-matching-objects-in-array-50fe2f4d6b98
   expect(result).toEqual(
     expect.arrayContaining([
       expect.objectContaining({
@@ -67,7 +63,7 @@ test("different single area code", () => {
 });
 
 test("single 803 area code", () => {
-  const zip = new ZipCode();
+  const zip = new Zips();
   const event = new FakeEvent();
   event.queryStringParameters = {
     area_codes: "413",
@@ -76,7 +72,6 @@ test("single 803 area code", () => {
 
   expect(result).toHaveLength(153);
 
-  // insired from https://medium.com/@andrei.pfeiffer/jest-matching-objects-in-array-50fe2f4d6b98
   expect(result).toEqual(
     expect.arrayContaining([
       expect.objectContaining({
@@ -87,7 +82,7 @@ test("single 803 area code", () => {
 });
 
 test("primary_city", () => {
-  const zip = new ZipCode();
+  const zip = new Zips();
   const event = new FakeEvent();
   event.queryStringParameters = {
     primary_city: "Seymour",
@@ -96,7 +91,6 @@ test("primary_city", () => {
 
   expect(result).toHaveLength(1);
 
-  // insired from https://medium.com/@andrei.pfeiffer/jest-matching-objects-in-array-50fe2f4d6b98
   expect(result).toEqual(
     expect.arrayContaining([
       expect.objectContaining({
@@ -107,7 +101,7 @@ test("primary_city", () => {
 });
 
 test('kClosestZips', () => {
-  const zip = new ZipCode()
+  const zip = new Zips()
   const zips = [
     {
       latitude: 1,
