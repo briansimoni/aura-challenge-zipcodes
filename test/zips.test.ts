@@ -6,7 +6,7 @@ import {
   QueryStringParameters,
   RequestContext,
   StageVariables,
-} from "../../src/types/event";
+} from "../src/types/event";
 import { handler } from "../src/zips";
 
 class FakeEvent implements HttpRequestEvent {
@@ -24,8 +24,8 @@ class FakeEvent implements HttpRequestEvent {
 }
 
 test("single area code", async () => {
-    const event = new FakeEvent()
-    event.httpMethod = 'GET'
-    const response = await handler(event)
-    expect(response.statusCode).toBe(200)
+  const event = new FakeEvent();
+  event.httpMethod = "GET";
+  const response = await handler(event);
+  expect(response.statusCode).toBe(200);
 });

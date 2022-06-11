@@ -100,22 +100,22 @@ test("primary_city", () => {
   );
 });
 
-test('kClosestZips', () => {
-  const zip = new Zips()
+test("kClosestZips", () => {
+  const zip = new Zips();
   const zips = [
     {
       latitude: 1,
-      longitude: 1
+      longitude: 1,
     },
     {
       latitude: 999,
-      longitude: 999
-    }
-  ]
-  const result = zip.kClosestZips(zips, {latitude: 2, longitude: 2}, 1)
+      longitude: 999,
+    },
+  ];
+  const result = zip.kClosestZips(zips, { latitude: 2, longitude: 2 }, 1);
 
-  expect(result).toHaveLength(1)
-  const closest = result[0]
-  expect(closest.latitude).toBe(1)
-  expect(closest.longitude).toBe(1)
-})
+  expect(result).toHaveLength(1);
+  const closest = result[0];
+  expect(closest.latitude).toBe(1);
+  expect(closest.longitude).toBe(1);
+});

@@ -10,19 +10,18 @@ const zips = new Zips();
 
 export async function handler(event: HttpRequestEvent) {
   try {
-      switch (event.httpMethod.toUpperCase()) {
-        case "GET":
-          return zips.get(event);
-        case "POST":
-          return zips.post(event);
-        default:
-          return {
-            statusCode: 404
-          };
-      }
-
+    switch (event.httpMethod.toUpperCase()) {
+      case "GET":
+        return zips.get(event);
+      case "POST":
+        return zips.post(event);
+      default:
+        return {
+          statusCode: 404,
+        };
+    }
   } catch (err) {
-    console.log(JSON.stringify(err))
+    console.log(JSON.stringify(err));
     return {
       statusCode: 500,
       body: err,
