@@ -5,34 +5,20 @@ export interface HttpRequestEvent {
     httpMethod: string;
     isBase64Encoded: boolean;
     queryStringParameters: QueryStringParameters;
-    multiValueQueryStringParameters: MultiValueQueryStringParameters;
     pathParameters: PathParameters;
-    stageVariables: StageVariables;
+    stageVariables?: StageVariables;
     headers: Headers;
-    multiValueHeaders: MultiValueHeaders;
+    multiValueHeaders?: MultiValueHeaders;
     requestContext: RequestContext;
   }
-  // export interface QueryStringParameters {
-  //   zip: string;
-  //   type: string;
-  //   primary_city: string;
-  //   state: string;
-  //   latitude: string;
-  //   longittude: string;
-  //   country: string;
-  //   area_coede: string;
-  // }
   export interface QueryStringParameters {
     [key:string]: string
-  }
-  export interface MultiValueQueryStringParameters {
-    foo?: string[] | null;
   }
   export interface PathParameters {
     proxy: string;
   }
   export interface StageVariables {
-    baz: string;
+    [key:string]: string;
   }
   export interface Headers {
     Accept: string;
@@ -44,35 +30,35 @@ export interface HttpRequestEvent {
     "CloudFront-Is-Mobile-Viewer": string;
     "CloudFront-Is-SmartTV-Viewer": string;
     "CloudFront-Is-Tablet-Viewer": string;
-    // CloudFront-Viewer-Country: string;
+    'CloudFront-Viewer-Country': string;
     Host: string;
-    // Upgrade-Insecure-Requests: string;
-    // User-Agent: string;
-    Via: string;
-    // X-Amz-Cf-Id: string;
-    // X-Forwarded-For: string;
-    // X-Forwarded-Port: string;
-    // X-Forwarded-Proto: string;
+    'Upgrade-Insecure-Requests': string;
+    'User-Agent': string;
+    'Via': string;
+    'X-Amz-Cf-Id': string;
+    'X-Forwarded-For': string;
+    'X-Forwarded-Port': string;
+    'X-Forwarded-Proto': string;
   }
   export interface MultiValueHeaders {
     Accept?: string[] | null;
-    // Accept-Encoding?: (string)[] | null;
-    // Accept-Language?: (string)[] | null;
-    // Cache-Control?: (string)[] | null;
-    // CloudFront-Forwarded-Proto?: (string)[] | null;
-    // CloudFront-Is-Desktop-Viewer?: (string)[] | null;
-    // CloudFront-Is-Mobile-Viewer?: (string)[] | null;
-    // CloudFront-Is-SmartTV-Viewer?: (string)[] | null;
-    // CloudFront-Is-Tablet-Viewer?: (string)[] | null;
-    // CloudFront-Viewer-Country?: (string)[] | null;
-    // Host?: (string)[] | null;
-    // Upgrade-Insecure-Requests?: (string)[] | null;
-    // User-Agent?: (string)[] | null;
-    // Via?: (string)[] | null;
-    // X-Amz-Cf-Id?: (string)[] | null;
-    // X-Forwarded-For?: (string)[] | null;
-    // X-Forwarded-Port?: (string)[] | null;
-    // X-Forwarded-Proto?: (string)[] | null;
+    'Accept-Encoding'?: (string)[] | null;
+    'Accept-Language'?: (string)[] | null;
+    'Cache-Control'?: (string)[] | null;
+    'CloudFront-Forwarded-Proto'?: (string)[] | null;
+    'CloudFront-Is-Desktop-Viewer'?: (string)[] | null;
+    'CloudFront-Is-Mobile-Viewer'?: (string)[] | null;
+    'CloudFront-Is-SmartTV-Viewer'?: (string)[] | null;
+    'CloudFront-Is-Tablet-Viewer'?: (string)[] | null;
+    'CloudFront-Viewer-Country'?: (string)[] | null;
+    'Host'?: (string)[] | null;
+    'Upgrade-Insecure-Requests'?: (string)[] | null;
+    'User-Agent'?: (string)[] | null;
+    'Via'?: (string)[] | null;
+    'X-Amz-Cf-Id'?: (string)[] | null;
+    'X-Forwarded-For'?: (string)[] | null;
+    'X-Forwarded-Port'?: (string)[] | null;
+    'X-Forwarded-Proto'?: (string)[] | null;
   }
   export interface RequestContext {
     accountId: string;

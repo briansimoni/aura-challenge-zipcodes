@@ -3,7 +3,7 @@ info:
   title: Aura Interview
   version: 1.0.0
 servers:
-  - url: https://5k41mmumcj.execute-api.us-east-1.amazonaws.com
+  - url: https://0gq2qt7zjb.execute-api.us-east-1.amazonaws.com
 paths:
   /prod/zips:
     get:
