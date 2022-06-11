@@ -1,13 +1,15 @@
-import { HttpRequestEvent } from "../types/event";
-import { Zips } from "../zipcode";
+import { HttpRequestEvent } from "./types/event";
+import { Zips } from "./resources/zipcode";
 
-// could theoretically be used across invocations
-// this improves efficiency by a small margin
+/**
+ * Since Zips is loading a large json file from disk,
+ * we can get a small optimization by loading it
+ * outside of the handler invocation
+ */
 const zips = new Zips();
 
 export async function handler(event: HttpRequestEvent) {
   try {
-
       switch (event.httpMethod.toUpperCase()) {
         case "GET":
           return zips.get(event);
