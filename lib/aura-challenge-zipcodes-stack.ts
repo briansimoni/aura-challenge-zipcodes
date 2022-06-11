@@ -24,6 +24,9 @@ export class AuraChallengeZipcodesStack extends Stack {
     const zips = apiGateway.root.addResource("zips");
     zips.addMethod("GET", new apigw.LambdaIntegration(zipsFunction));
 
+    const zip = zips.addResource("{zip}");
+    zip.addMethod("GET", new apigw.LambdaIntegration(zipsFunction));
+
     const docs = apiGateway.root.addResource("docs");
     docs.addMethod("GET", new apigw.LambdaIntegration(docsFunction));
   }

@@ -16,6 +16,21 @@ export class Zips {
   // If you were to literally send in a zip code such as: '23224'
   get(event: HttpRequestEvent) {
     let zips = [...zipcodes];
+
+    if (event.pathParameters !== null) {
+      const zip = zips.find(zip => zip.zip === event?.pathParameters?.zip)
+      if (zip === undefined) {
+        return {
+          statusCode: 404,
+          body: `${event.pathParameters.zip} was not found in the data set`
+        }
+      }
+      return {
+        statusCode: 200,
+        body: JSON.stringify(zip)
+      }
+    }
+
     const queryParams = event.queryStringParameters;
     if (queryParams) {
       if (queryParams.zip !== undefined) {

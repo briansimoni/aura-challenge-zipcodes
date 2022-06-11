@@ -5,7 +5,7 @@ export interface HttpRequestEvent {
     httpMethod: string;
     isBase64Encoded: boolean;
     queryStringParameters: QueryStringParameters;
-    pathParameters: PathParameters;
+    pathParameters: PathParameters | null;
     stageVariables?: StageVariables;
     headers: Headers;
     multiValueHeaders?: MultiValueHeaders;
@@ -15,7 +15,7 @@ export interface HttpRequestEvent {
     [key:string]: string
   }
   export interface PathParameters {
-    proxy: string;
+    zip: string
   }
   export interface StageVariables {
     [key:string]: string;
