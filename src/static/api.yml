@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  title: Aura Interview
+  version: 1.0.0
+servers:
+  - url: https://0gq2qt7zjb.execute-api.us-east-1.amazonaws.com
+paths:
+  /prod/zips:
+    get:
+      tags:
+        - default
+      summary: Get Zips
+      parameters:
+        - name: zip
+          in: query
+          schema:
+            type: integer
+          description: Can search for partial zips
+          example: '01001'
+        - name: area_codes
+          in: query
+          schema:
+            type: integer
+          example: '413'
+        - name: coordinates
+          in: query
+          schema:
+            type: number
+          description: lat/long separated by a comma. no whitespaces
+          example: 42.06,-72.61
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: limit the amount of zipcodes to return
+          example: '5'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: STANDARD
+        - name: country
+          in: query
+          schema:
+            type: string
+          example: US
+        - name: primary_city
+          in: query
+          schema:
+            type: string
+          example: Agawam
+        - name: state
+          in: query
+          schema:
+            type: string
+          example: MA
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /prod/zips/{zip}:
+    get:
+      tags:
+        - default
+      summary: Get Zip
+      parameters:
+        - name: zip
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '01001'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

@@ -2,7 +2,6 @@ import {
   Headers,
   HttpRequestEvent,
   MultiValueHeaders,
-  PathParameters,
   QueryStringParameters,
   RequestContext,
   StageVariables,
@@ -17,7 +16,7 @@ class FakeEvent implements HttpRequestEvent {
   httpMethod: string;
   isBase64Encoded: false;
   queryStringParameters: QueryStringParameters;
-  pathParameters: PathParameters;
+  pathParameters: null;
   stageVariables: StageVariables;
   headers: Headers;
   multiValueHeaders: MultiValueHeaders;
@@ -119,3 +118,24 @@ test("kClosestZips", () => {
   expect(closest.latitude).toBe(1);
   expect(closest.longitude).toBe(1);
 });
+
+
+test("all queryParams present", () => {
+  const zip = new Zips();
+  const event = new FakeEvent()
+  event.queryStringParameters = {
+    zip: "01001",
+    coordinates: "42.06,-72.61",
+    limit: "5",
+    type: "STANDARD",
+    country: "US",
+    primary_city: "Agawam",
+    state: 'MA'
+  }
+  const result = JSON.parse(zip.get(event).body);
+
+  expect(result).toHaveLength(1);
+  expect(result[0].zip).toBe("01001")
+  expect(result[0].latitude).toBe("42.06")
+  expect(result[0].longitude).toBe("-72.61")
+})

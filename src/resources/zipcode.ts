@@ -17,7 +17,7 @@ export class Zips {
   get(event: HttpRequestEvent) {
     let zips = [...zipcodes];
 
-    if (event.pathParameters !== null) {
+    if (event.pathParameters) {
       const zip = zips.find(zip => zip.zip === event?.pathParameters?.zip)
       if (zip === undefined) {
         return {
@@ -102,6 +102,7 @@ export class Zips {
     });
 
     const result = [];
+    k = Math.min(k, zipsWithDistance.length)
     for (let i = 0; i < k; i++) {
       delete zipsWithDistance[i].distance;
       result.push(zipsWithDistance[i]);
