@@ -18,17 +18,17 @@ export class Zips {
     let zips = [...zipcodes];
 
     if (event.pathParameters) {
-      const zip = zips.find(zip => zip.zip === event?.pathParameters?.zip)
+      const zip = zips.find((zip) => zip.zip === event?.pathParameters?.zip);
       if (zip === undefined) {
         return {
           statusCode: 404,
-          body: `${event.pathParameters.zip} was not found in the data set`
-        }
+          body: `${event.pathParameters.zip} was not found in the data set`,
+        };
       }
       return {
         statusCode: 200,
-        body: JSON.stringify(zip)
-      }
+        body: JSON.stringify(zip),
+      };
     }
 
     const queryParams = event.queryStringParameters;
@@ -76,6 +76,11 @@ export class Zips {
       if (queryParams.state !== undefined) {
         zips = zips.filter((zip) => zip.state === queryParams.state);
       }
+
+      if (queryParams.limit !== undefined) {
+        const limit = parseInt(queryParams.limit);
+        zips = zips.slice(0, limit);
+      }
     }
     return {
       statusCode: 200,
@@ -102,7 +107,7 @@ export class Zips {
     });
 
     const result = [];
-    k = Math.min(k, zipsWithDistance.length)
+    k = Math.min(k, zipsWithDistance.length);
     for (let i = 0; i < k; i++) {
       delete zipsWithDistance[i].distance;
       result.push(zipsWithDistance[i]);
