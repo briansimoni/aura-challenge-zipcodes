@@ -3,7 +3,7 @@ info:
   title: Aura Interview
   version: 1.0.0
 servers:
-  - url: https://stereodose.app
+  - url: https://zips.stereodose.app
 paths:
   /zips:
     get:
