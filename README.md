@@ -197,3 +197,9 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ### notes
 `p2o 'C:\Users\Brian\Downloads\Aura Interview.postman_collection.json' -f .\Downloads\api.yml`
+
+https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/aws-lambda/trigger/api-gateway-proxy.d.ts
+
+https://docs.aws.amazon.com/cdk/api/v1/docs/aws-apigateway-readme.html
+
+https://aws.amazon.com/blogs/compute/best-practices-for-organizing-larger-serverless-applications/

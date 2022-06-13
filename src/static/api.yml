@@ -3,9 +3,9 @@ info:
   title: Aura Interview
   version: 1.0.0
 servers:
-  - url: https://0gq2qt7zjb.execute-api.us-east-1.amazonaws.com
+  - url: https://zips.stereodose.app/zips
 paths:
-  /prod/zips:
+  /zips:
     get:
       tags:
         - default
@@ -59,7 +59,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /prod/zips/{zip}:
+  /zips/{zip}:
     get:
       tags:
         - default
